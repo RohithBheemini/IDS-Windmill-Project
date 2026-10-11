@@ -1,0 +1,14 @@
+# Raw Benchmark Dataset Archives & Directories (exceeds GitHub 100MB limit)
+CARE_To_Compare.zip
+CARE_To_Compare/
+
+# R session artifacts
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# OS temporary files
+Thumbs.db
+Desktop.ini
+.DS_Store
