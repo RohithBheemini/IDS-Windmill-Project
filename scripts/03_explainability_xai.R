@@ -3,9 +3,7 @@
 suppressPackageStartupMessages({
   library(data.table)
   library(xgboost)
-  library(ranger)
   library(lime)
-  library(ggplot2)
 })
 
 cat("========================================================\n")

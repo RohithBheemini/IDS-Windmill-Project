@@ -8,7 +8,6 @@ suppressPackageStartupMessages({
   library(scales)
   library(DT)
   library(xgboost)
-  library(pROC)
 })
 
 # 1. Load Pre-processed Data & Model Artifacts
@@ -24,8 +23,6 @@ if (!dir.exists(data_dir)) {
 
 telemetry         <- readRDS(file.path(data_dir, "clean_telemetry.rds"))
 events            <- readRDS(file.path(data_dir, "clean_events.rds"))
-events_b          <- readRDS(file.path(data_dir, "events_farm_b.rds"))
-events_c          <- readRDS(file.path(data_dir, "events_farm_c.rds"))
 benchmark_results <- readRDS(file.path(model_dir, "benchmark_results.rds"))
 cv_predictions    <- readRDS(file.path(model_dir, "cv_predictions.rds"))
 care_earliness    <- readRDS(file.path(model_dir, "care_earliness.rds"))

@@ -13,9 +13,8 @@ base_dir <- file.path(getwd(), "CARE_To_Compare", "CARE_To_Compare")
 output_dir <- file.path(getwd(), "data_clean")
 dir.create(output_dir, showWarnings = FALSE)
 
-# 1. Load Event Info and Feature Descriptions across all farms
+# 1. Load Event Info across all farms
 events_a <- fread(file.path(base_dir, "Wind Farm A", "event_info.csv"), sep = ";")
-feats_a  <- fread(file.path(base_dir, "Wind Farm A", "feature_description.csv"), sep = ";")
 events_b <- fread(file.path(base_dir, "Wind Farm B", "event_info.csv"), sep = ";")
 events_c <- fread(file.path(base_dir, "Wind Farm C", "event_info.csv"), sep = ";")
 
@@ -210,9 +209,5 @@ print(table(clean_events$target))
 saveRDS(clean_telemetry, file.path(output_dir, "clean_telemetry.rds"))
 saveRDS(clean_events, file.path(output_dir, "clean_events.rds"))
 fwrite(clean_events, file.path(output_dir, "clean_events.csv"))
-
-# Also save Wind Farms B and C metadata overview
-saveRDS(events_b, file.path(output_dir, "events_farm_b.rds"))
-saveRDS(events_c, file.path(output_dir, "events_farm_c.rds"))
 
 cat("\nSaved clean data artifacts successfully to 'data_clean/'.\n")

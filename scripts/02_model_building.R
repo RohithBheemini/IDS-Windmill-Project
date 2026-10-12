@@ -180,6 +180,16 @@ final_glm <- glm(
   data = dt_sub,
   family = binomial(link = "logit")
 )
+# Strip redundant in-memory training matrices to prevent 49MB file bloat
+final_glm$data <- NULL
+final_glm$model <- NULL
+final_glm$residuals <- NULL
+final_glm$fitted.values <- NULL
+final_glm$effects <- NULL
+final_glm$weights <- NULL
+final_glm$prior.weights <- NULL
+final_glm$linear.predictors <- NULL
+final_glm$y <- NULL
 
 # 5. CARE Score Evaluation (Coverage, Accuracy, Reliability, Earliness)
 # We test Earliness on the prediction period of anomaly events
