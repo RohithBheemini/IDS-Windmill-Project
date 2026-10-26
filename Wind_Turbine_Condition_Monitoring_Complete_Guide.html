@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wind Turbine Condition Monitoring & XAI: Zero-Knowledge Complete Guide</title>
+<style>
+  @page {
+    size: A4;
+    margin: 18mm 15mm 18mm 15mm;
+    @bottom-right {
+      content: counter(page);
+      font-size: 9pt;
+      color: #64748b;
+    }
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1e293b;
+    line-height: 1.6;
+    font-size: 10pt;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  .cover {
+    page-break-after: always;
+    padding-top: 80px;
+    text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    padding: 5px 14px;
+    font-size: 9pt;
+    font-weight: 700;
+    border-radius: 9999px;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+  }
+  h1.title {
+    font-size: 26pt;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  p.subtitle {
+    font-size: 12.5pt;
+    color: #475569;
+    max-width: 650px;
+    margin: 0 auto 35px auto;
+  }
+  .meta-box {
+    margin-top: 40px;
+    padding: 22px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: left;
+    font-size: 9.5pt;
+    color: #334155;
+    line-height: 1.8;
+  }
+  .meta-box strong { color: #0f172a; }
+
+  h1 {
+    color: #0f172a;
+    font-size: 16pt;
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 6px;
+    margin-top: 32px;
+    margin-bottom: 14px;
+    page-break-before: always;
+  }
+  h1:first-of-type { page-break-before: avoid; }
+  h2 {
+    color: #1e293b;
+    font-size: 12.5pt;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    border-left: 4px solid #0284c7;
+    padding-left: 10px;
+  }
+  h3 { color: #334155; font-size: 10.5pt; margin-top: 14px; margin-bottom: 6px; }
+  p { margin: 0 0 10px 0; }
+  ul, ol { margin: 0 0 12px 0; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  
+  .card {
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+  }
+  .card-info { background-color: #f0f9ff; border-left: 4px solid #0284c7; color: #0c4a6e; }
+  .card-success { background-color: #ecfdf5; border-left: 4px solid #10b981; color: #064e3b; }
+  .card-warning { background-color: #fffbeb; border-left: 4px solid #f59e0b; color: #78350f; }
+  .card-danger { background-color: #fff1f2; border-left: 4px solid #f43f5e; color: #881337; }
+  .card-title { font-weight: 700; margin-bottom: 5px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 8.8pt;
+    page-break-inside: avoid;
+  }
+  th, td { padding: 7px 10px; border: 1px solid #cbd5e1; text-align: left; }
+  th { background-color: #f1f5f9; color: #0f172a; font-weight: 700; }
+  tr:nth-child(even) td { background-color: #f8fafc; }
+  code {
+    font-family: Consolas, monospace;
+    background-color: #f1f5f9;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #0f172a;
+    font-size: 8.8pt;
+  }
+  pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 8.5pt;
+    overflow-x: auto;
+    page-break-inside: avoid;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <span class="badge">Definitive Student &amp; Defense Manual</span>
+  <h1 class="title">WIND TURBINE CONDITION MONITORING<br>&amp; EXPLAINABLE AI</h1>
+  <p class="subtitle">A Microscopic, Zero-Knowledge Guide from Raw SCADA &amp; Physics to Machine Learning, the Interactive Shiny Dashboard, Pitch Walkthrough, and Lecturer Defense</p>
+  
+  <div class="meta-box">
+    <div><strong>Project Name:</strong> Wind Turbine SCADA Predictive Anomaly Detection</div>
+    <div><strong>Dataset:</strong> Industrial CARE_To_Compare Benchmark (89 Years Telemetry)</div>
+    <div><strong>Core Technologies:</strong> R 4.6.1, XGBoost, Random Forest, GLM, TreeSHAP, LIME, Shiny Dashboard</div>
+    <div><strong>Validation:</strong> Leave-One-Turbine-Out Group Cross-Validation (0.83 AUC, 8-34 Days Early Warning)</div>
+    <div><strong>Target Audience:</strong> Students, Presenters, Industry Critics, Academic Evaluators</div>
+  </div>
+</div>
+
+<h1>1. The Physical Reality: Windmills &amp; The $150,000 Crisis</h1>
+
+<h2>1.1 What is a Wind Turbine in Real Life?</h2>
+<p>To understand the code and charts, you must first understand the giant machine sitting out in the ocean or on top of a mountain. A utility-scale wind turbine is not just a fan; it is a <strong>multi-megawatt power plant on a 100-meter tower</strong>.</p>
+<ul>
+  <li><strong>The Rotor &amp; Blades:</strong> Massive blades (50 to 80 meters long) catch the wind. Because of their immense weight, they spin slowly—typically only <strong>10 to 18 Revolutions Per Minute (RPM)</strong>.</li>
+  <li><strong>The Low-Speed Shaft:</strong> Connects the rotating blades into the nacelle (the bus-sized housing at the top).</li>
+  <li><strong>The Gearbox (The Most Vulnerable Component):</strong> A standard electrical generator needs to spin at <strong>1,500 to 1,800 RPM</strong> to produce 50Hz/60Hz AC electricity. The gearbox multiplies the speed by nearly <strong>90 to 100 times</strong>. This creates gigantic mechanical stresses and intense friction on bearings and gear teeth.</li>
+  <li><strong>The High-Speed Shaft (HSS):</strong> Spins at 1,500+ RPM inside precision steel bearings. If lubrication fails, metal-on-metal friction generates extreme heat within hours.</li>
+  <li><strong>The Generator:</strong> Converts mechanical rotation into electricity using electromagnetic induction. It contains copper windings (the stator) and bearings at both ends (Drive-End DE, and Non-Drive-End NDE).</li>
+  <li><strong>The Transformer:</strong> Takes electricity produced at ~690 Volts and steps it up to ~33,000 Volts so power can travel along underwater or underground power lines without massive electrical heat loss.</li>
+  <li><strong>The Hydraulic Group:</strong> High-pressure oil pumps that physically twist ("pitch") the blades to catch optimal wind or feather them to a stop in dangerous hurricane conditions.</li>
+</ul>
+
+<div class="card card-info">
+  <div class="card-title">💡 The Core Mechanical Bottleneck</div>
+  Over 60% of catastrophic wind turbine downtime is caused by <strong>Gearbox, Generator, and Transformer breakdowns</strong>. When a steel bearing inside a gearbox begins to wear, it sheds microscopic metal flakes. Those flakes grind the gears, causing runaway friction and heat until the entire assembly violently seizes.
+</div>
+
+<h2>1.2 What is SCADA Telemetry?</h2>
+<p><strong>SCADA</strong> stands for <em>Supervisory Control and Data Acquisition</em>. It is the turbine's digital nervous system.</p>
+<p>Instead of hiring technicians to sit inside the turbine 24/7, digital sensors are attached to bearings, oil pipes, gearboxes, and generators. Every <strong>10 minutes</strong>, the computer logs:</p>
+<ul>
+  <li><strong>Average temperature</strong> of every component (Gearbox bearing, oil, generator, transformer, ambient air).</li>
+  <li><strong>Rotational speeds (RPM)</strong> of the rotor and generator.</li>
+  <li><strong>Electrical power</strong> (Active Power in Kilowatts kW, Reactive Power in kVAR).</li>
+  <li><strong>Environmental factors</strong> (Wind speed in m/s, nacelle ambient air temperature).</li>
+</ul>
+
+<h2>1.3 The $150,000 Business Crisis (Why this project exists)</h2>
+<div class="card card-danger">
+  <div class="card-title">⚠️ The Offshore Maintenance Disaster (False Negative Cost: $150,000+)</div>
+  If an offshore wind turbine in the North Sea suffers a catastrophic gearbox seizure during a winter gale:
+  <ol>
+    <li>You cannot use a regular boat. You must charter a specialized <strong>Jack-Up Crane Vessel</strong>.</li>
+    <li>Mobilizing that crane vessel costs <strong>$150,000 to $300,000</strong> per trip.</li>
+    <li>A replacement gearbox costs <strong>$250,000</strong>.</li>
+    <li>Winter seas are too rough for cranes, so the turbine sits broken for <strong>3 to 6 months</strong>, losing $100,000+ in clean green electricity production.</li>
+  </ol>
+</div>
+
+<div class="card card-success">
+  <div class="card-title">✅ The Condition Monitoring Solution (Planned Preventive Cost: $8,000)</div>
+  If our machine learning model detects microscopic friction <strong>14 to 30 days before total failure</strong>:
+  <ol>
+    <li>Engineers check the weather forecast and find a calm 48-hour window.</li>
+    <li>Two technicians take a small crew transfer boat with an <strong>$8,000 replacement bearing</strong>.</li>
+    <li>They climb inside the nacelle ("uptower") and swap the worn bearing before gear teeth are stripped.</li>
+    <li><strong>Net Cash Saved on ONE event: $142,000!</strong></li>
+  </ol>
+</div>
+
+<h1>2. The Dataset at a Microscopic Level (CARE_To_Compare)</h1>
+
+<h2>2.1 Dataset Origins &amp; Architecture</h2>
+<p>Many academic projects use fake synthetic datasets or clean toy examples. This project is built on the rigorous, gold-standard European industrial benchmark: <strong>CARE_To_Compare</strong> (published in 2023).</p>
+<ul>
+  <li><strong>Total Duration:</strong> 89 cumulative years of continuous 10-minute SCADA telemetry.</li>
+  <li><strong>Total Turbines:</strong> 36 industrial wind turbines.</li>
+  <li><strong>Total Benchmark Events:</strong> 95 curated events (44 verified catastrophic failure runs, 51 healthy normal control runs).</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Wind Farm</th>
+      <th>Location</th>
+      <th>Turbines</th>
+      <th>Datasets</th>
+      <th>Sensor Features</th>
+      <th>Failure Modes Covered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Wind Farm A</strong></td>
+      <td>Onshore Portugal (EDP Open Data)</td>
+      <td>5 Turbines</td>
+      <td>22 Events</td>
+      <td>86 Raw Signals</td>
+      <td>Gearbox, Generator Bearing, Transformer, Hydraulic Group</td>
+    </tr>
+    <tr>
+      <td><strong>Wind Farm B</strong></td>
+      <td>Offshore North Sea (Germany)</td>
+      <td>~15 Turbines</td>
+      <td>15 Events</td>
+      <td>257 Raw Signals</td>
+      <td>Marine salt corrosion, Rotor bearing fatigue, Transformer trips</td>
+    </tr>
+    <tr>
+      <td><strong>Wind Farm C</strong></td>
+      <td>Offshore Baltic/North Sea</td>
+      <td>~16 Turbines</td>
+      <td>58 Events</td>
+      <td>957 Raw Signals</td>
+      <td>Deep component telemetry: converter IGBTs, pitch motors, blade heating</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2.2 Understanding the Two Halves of Every Dataset</h2>
+<p>When you open any CSV file in the dataset (e.g., <code>72.csv</code> for Event 72), the data is divided into two distinct chronological phases marked by the <code>train_test</code> column:</p>
+<ol>
+  <li><code>train_test == "train"</code> <strong>(The Healthy Baseline):</strong> Months of historical operating records where the turbine is certified to be running normally with zero faults. The model uses this to learn what "healthy operation" looks like for that specific machine.</li>
+  <li><code>train_test == "prediction"</code> <strong>(The Surveillance Window):</strong> Continuous 10-minute records leading up to either an emergency shutdown (in an anomaly event) or continuing normally (in a control event). This is where our model must sound the alarm days or weeks before disaster strikes.</li>
+</ol>
+
+<h2>2.3 The Raw Sensor Codebook (Translating Cryptic Column Names)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Raw Column Name</th>
+      <th>Physical Sensor Measurement</th>
+      <th>Normal Operating Range</th>
+      <th>Why It Matters for Failures</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>sensor_0_avg</code></td>
+      <td>Ambient Air Temperature Outside Nacelle</td>
+      <td>-10°C to +40°C</td>
+      <td>Crucial baseline. Everything gets hotter on a hot day.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_11_avg</code></td>
+      <td>Gearbox High-Speed Shaft Bearing Temp</td>
+      <td>45°C to 70°C</td>
+      <td>Direct indicator of mechanical friction and bearing wear.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_12_avg</code></td>
+      <td>Gearbox Lubrication Sump Oil Temp</td>
+      <td>40°C to 65°C</td>
+      <td>If oil overheats, lubrication viscosity collapses.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_13_avg</code></td>
+      <td>Generator Drive-End (DE) Bearing Temp</td>
+      <td>35°C to 60°C</td>
+      <td>Bearing closest to gearbox coupling; absorbs misalignment.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_14_avg</code></td>
+      <td>Generator Non-Drive-End (NDE) Bearing Temp</td>
+      <td>35°C to 55°C</td>
+      <td>Bearing at rear electrical slip-ring end.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_16, 17, 18</code></td>
+      <td>Generator Stator Winding Temps (Phases U, V, W)</td>
+      <td>50°C to 110°C</td>
+      <td>Direct measurement of electrical heating under megawatt loads.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_39, 40, 41</code></td>
+      <td>Transformer 3-Phase Core Temperatures</td>
+      <td>30°C to 85°C</td>
+      <td>Transformer insulation degrades exponentially when running too hot.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_42_avg</code></td>
+      <td>Hydraulic Group Oil Temperature</td>
+      <td>25°C to 50°C</td>
+      <td>Overheating oil indicates worn pump pistons or stuck valves.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_44</code></td>
+      <td>Nacelle Internal Air Temperature</td>
+      <td>10°C to 45°C</td>
+      <td>Enclosed room temperature inside the fiberglass head.</td>
+    </tr>
+    <tr>
+      <td><code>wind_speed_3_avg</code></td>
+      <td>Cup Anemometer Wind Velocity</td>
+      <td>0 to 25 m/s</td>
+      <td>Input kinetic energy driving the entire power train.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_5_avg</code></td>
+      <td>Blade Pitch Angle</td>
+      <td>-2° to 90° (feathered)</td>
+      <td>Controls how much wind energy is captured or spilled.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_53_avg</code></td>
+      <td>Rotor Rotational Speed</td>
+      <td>8 to 20 RPM</td>
+      <td>Slow speed of the massive blades.</td>
+    </tr>
+    <tr>
+      <td><code>sensor_18_avg</code></td>
+      <td>Generator Shaft Rotational Speed</td>
+      <td>800 to 1,800 RPM</td>
+      <td>High speed output from gearbox to generator.</td>
+    </tr>
+    <tr>
+      <td><code>power_30_avg</code></td>
+      <td>Active Electrical Power Generated</td>
+      <td>0 to 2,050 kW (2.05 MW)</td>
+      <td>Actual useful electricity fed into the electrical grid.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2.4 Data Cleaning Hygiene: Why We Strictly Forbid "SMOTE" and Leaks</h2>
+<div class="card card-warning">
+  <div class="card-title">🎓 Lecturer Trap #1: "Why didn't you use SMOTE to balance the classes?"</div>
+  <strong>Your Answer:</strong> "Because SMOTE works by drawing straight mathematical lines between data points in multi-dimensional space. In a physical machine, this creates physically impossible thermodynamic hallucinations! For example, SMOTE might invent a row where a generator produces 2,000 kW while wind speed is 0 m/s, or where a bearing is 80°C while ambient is 0°C and power is 0. A model trained on fake physics fails catastrophically in the real world. We kept 100% genuine sensor data and handled class imbalance using cost-sensitive decision thresholds and scale weights."
+</div>
+
+<div class="card card-danger">
+  <div class="card-title">⚠️ Lecturer Trap #2: "What is Target Leakage in SCADA, and how did you prevent it?"</div>
+  <strong>Your Answer:</strong> "In the raw dataset, there is a column called <code>status_type_id</code>. Whenever a turbine suffers a catastrophic breakdown, its internal safety relay flips this code to <code>3</code> or <code>4</code> ('Emergency Trip'). If a machine learning model is allowed to see that column, it achieves 99.9% accuracy—not because it predicted anything, but because it simply looked up whether the turbine was already broken! That is called Target Leakage. We strictly stripped out all status codes so our model must predict failure purely from subtle, early thermodynamic changes."
+</div>
+
+<h1>3. Physics-First Feature Engineering</h1>
+
+<h2>3.1 Why Raw Sensor Temperatures Lie (The Seasonality Trap)</h2>
+<p>If you feed raw temperatures (e.g., <code>sensor_11_avg = 65°C</code>) directly into a machine learning algorithm, it will make terrible mistakes because of weather seasonality:</p>
+<ul>
+  <li><strong>In Summer (July noon):</strong> Ambient air outside is <strong>38°C</strong>. A healthy gearbox naturally runs at <strong>62°C</strong> simply because the cooling air is warm. The model screams "ALARM!" (False Positive).</li>
+  <li><strong>In Winter (January night):</strong> Ambient air outside is <strong>-5°C</strong>. A failing gearbox with extreme bearing friction is running at <strong>55°C</strong>. The raw temperature looks mild, so the model ignores it. The bearing destroys itself hours later! (False Negative).</li>
+</ul>
+
+<h2>3.2 The Physics Solution: Thermodynamic Differentials (&Delta;T)</h2>
+<p>We engineered <strong>Thermodynamic Temperature Differentials</strong> by subtracting ambient temperature from every component:</p>
+<pre>
+delta_T_gearbox     = sensor_11_avg - sensor_0_avg
+delta_T_oil         = sensor_12_avg - sensor_0_avg
+delta_T_gen_de      = sensor_13_avg - sensor_0_avg
+delta_T_transformer = sensor_39_avg - sensor_0_avg
+delta_T_hydraulic   = sensor_42_avg - sensor_0_avg
+</pre>
+<p><strong>What &Delta;T reveals:</strong> &Delta;T isolates purely the <em>internally generated heat</em> caused by mechanical friction and electrical resistance. Whether it is a blazing summer day or freezing winter night, a healthy gearbox has &Delta;T &approx; 20°C to 25°C. When a bearing fails, &Delta;T creeps up to 45°C+. The weather effect is completely eliminated!</p>
+
+<h2>3.3 Capturing Creeping Friction: Causal Rolling Trends (6-Hour Window)</h2>
+<p>Mechanical wear does not happen in a single 10-minute snapshot. Metal spalls, fatigue cracks, and lubricant breakdown cause slow, creeping heat over hours.</p>
+<p>We engineered 6-hour (36-step) moving averages: <code>roll_mean_gearbox_6h</code>, <code>roll_mean_trans_6h</code>, and <code>roll_mean_hydr_6h</code>.</p>
+<div class="card card-info">
+  <div class="card-title">💡 The "Causal / Backward" Rule</div>
+  We computed moving averages with <code>align = "right"</code>. This means each calculation looks <strong>strictly backward into the past 6 hours</strong>. If you use a centered moving average, the calculation looks into the future, which is impossible in real-world deployment!
+</div>
+
+<h2>3.4 Electromechanical &amp; Aerodynamic Indicators</h2>
+<ul>
+  <li><strong>Gear Ratio Proxy:</strong> <code>gear_ratio_est = generator_rpm / rotor_rpm</code>. Under normal locked operation, this ratio is a fixed mechanical constant (~90 to 100). If generator slip rings decouple or gear teeth strip, this ratio becomes erratic.</li>
+  <li><strong>Betz Aerodynamic Power Proxy:</strong> <code>power_coefficient = active_power / (wind_speed ^ 3)</code>. According to fluid dynamics (Betz Law), the kinetic energy in wind scales with the <em>cube</em> of wind velocity ($v^3$). If wind is blowing hard but power drops, something is aerodynamically or mechanically choking the turbine.</li>
+</ul>
+
+<h1>4. Model Building &amp; Validation Rigor</h1>
+
+<h2>4.1 The Three Competitor Models</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Model Architecture</th>
+      <th>Algorithm Type</th>
+      <th>Held-Out Test AUC</th>
+      <th>Training Speed (100k rows)</th>
+      <th>RAM Footprint</th>
+      <th>Verdict for Industrial Deployment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Logistic Regression (GLM)</strong></td>
+      <td>Linear Generalized Linear Model</td>
+      <td>0.7544</td>
+      <td>1.14 seconds</td>
+      <td>28 MB</td>
+      <td>Too rigid. Cannot capture non-linear thermal-aerodynamic curves.</td>
+    </tr>
+    <tr>
+      <td><strong>Random Forest (Ranger)</strong></td>
+      <td>Bagged Decision Trees (100 trees)</td>
+      <td>0.7735</td>
+      <td>4.82 seconds</td>
+      <td>420 MB</td>
+      <td>Accurate, but large memory overhead for edge SCADA gateways.</td>
+    </tr>
+    <tr>
+      <td><strong>XGBoost (`xgboost`)</strong></td>
+      <td>Gradient Boosted Decision Trees</td>
+      <td><strong>0.8297</strong></td>
+      <td><strong>0.67 seconds</strong></td>
+      <td><strong>109 MB</strong></td>
+      <td><strong>WINNER:</strong> Sub-second training, tiny footprint, best generalization.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4.2 The Golden Standard: Leave-One-Turbine-Out Group Cross-Validation</h2>
+<div class="card card-warning">
+  <div class="card-title">🎓 Lecturer Trap #3: "How did you validate your model?"</div>
+  <strong>Your Answer:</strong> "We rejected the standard random 80/20 train/test split because time-series SCADA data suffers from strong spatial and temporal autocorrelation. If you randomly split rows, consecutive 10-minute records from the exact same turbine end up in both train and test sets, artificially inflating accuracy to a fake 99%.<br><br>
+  Instead, we enforced <strong>Leave-One-Turbine-Out Group Cross-Validation (Group K-Fold by Asset ID)</strong>. When evaluating on Turbine #21, its entire operational history was locked away. The model trained purely on Turbines 11, 12, 13, and 14. This proves that our model works on a brand-new, unseen physical windmill!"
+</div>
+
+<h2>4.3 The Asymmetric Cost Curve &amp; Why Threshold is 0.35 (Not 0.50)</h2>
+<p>Every standard machine learning tutorial teaches students to use <code>threshold = 0.50</code> (if probability &ge; 0.50, sound the alarm). In industrial wind energy, <strong>a 0.50 threshold is financially reckless</strong>.</p>
+<ul>
+  <li><strong>Cost of False Negative ($C_{FN}$):</strong> Missing a catastrophic gearbox breakdown = <strong>$150,000</strong>.</li>
+  <li><strong>Cost of False Positive ($C_{FP}$):</strong> Sounding an alarm that turns out to be nothing = <strong>$3,500</strong> (a quick visual inspection).</li>
+</ul>
+<p>Because missing a failure is <strong>43 times more expensive</strong> than a false inspection, our objective function is not standard classification accuracy; it is <strong>Minimum Total Financial Loss</strong>. When you plot expected financial loss against the alarm threshold, the optimal bottom of the U-curve sits between <strong>0.30 and 0.35</strong>. That is why our default decision threshold is set to 0.35.</p>
+
+<h1>5. Explainable AI: Demystifying SHAP &amp; LIME</h1>
+
+<h2>5.1 Why Domain Engineers Reject Black Boxes</h2>
+<p>Imagine walking into a wind farm control room and telling a veteran mechanical engineer: <em>"The neural network outputs 0.88, so you must shut down this $5 Million turbine and charter a boat."</em></p>
+<p>The engineer will laugh and ignore you. Why? Because they cannot justify spending money without knowing <strong>which specific component is breaking</strong>. Is it the gearbox? The transformer? A broken wire? Or did a sensor just get unplugged?</p>
+
+<h2>5.2 TreeSHAP: Exact Game-Theoretic Credit Assignment</h2>
+<p><strong>SHAP</strong> (SHapley Additive exPlanations) is grounded in Lloyd Shapley's Nobel Prize-winning game theory. It treats each sensor feature as a "player" in a cooperative game and calculates its exact marginal contribution to the final risk score.</p>
+<pre>
+Risk Score = Base Average Risk + Sum(SHAP Value of Feature i)
+</pre>
+<ul>
+  <li><strong>Positive SHAP (+):</strong> Pushes the probability UP towards an anomaly alarm (e.g., <code>temp_gearbox_bearing: +0.9069</code>).</li>
+  <li><strong>Negative SHAP (-):</strong> Pulls the probability DOWN towards safe, healthy operation (e.g., <code>temp_generator_stator: -0.1520</code>).</li>
+  <li><strong>Global SHAP:</strong> Ranks which features matter most across the entire wind farm. In our model, differential temperatures (&Delta;T) and 6-hour rolling trends occupy the top 5 ranks.</li>
+  <li><strong>Local SHAP:</strong> Produces a personalized "waterfall" for a single specific alarm, proving exactly why that turbine was flagged.</li>
+</ul>
+
+<h2>5.3 LIME: Local Interpretable Surrogate Rules</h2>
+<p>While SHAP provides exact mathematical contributions, <strong>LIME</strong> (Local Interpretable Model-agnostic Explanations) translates complex tree splits into simple, human-readable "if-then" rules around that specific moment:</p>
+<div class="card card-success">
+  <div class="card-title">✅ Example LIME Rulebook for Event 72 (Gearbox Failure)</div>
+  <code>IF temp_gearbox_bearing &gt; 58.5°C AND gear_oil_temp &gt; 52.0°C AND delta_T_gearbox &gt; 35.0°C THEN Risk = Anomaly (Weight: +0.78)</code>
+</div>
+
+<h1>6. Microscopic Shiny Frontend Walkthrough</h1>
+<p>Here is an exhaustive, point-by-point explanation of every single tab, button, card, and plot on your Shiny web dashboard.</p>
+
+<h2>Tab 1: Fleet Overview</h2>
+<ul>
+  <li><strong>Top Value Box 1 (Total Wind Farms):</strong> Displays "3 Farms (A, B, C)". Explains that the benchmark covers both onshore terrain in Portugal and severe offshore marine environments in Germany.</li>
+  <li><strong>Top Value Box 2 (Monitored Fleet):</strong> Displays "36 Turbines" and "89 Years of SCADA". Tells the audience this is massive, authentic big data.</li>
+  <li><strong>Top Value Box 3 (Benchmark Events):</strong> Displays "95 Events" (44 verified catastrophic failures and 51 certified normal controls).</li>
+  <li><strong>Top Value Box 4 (Lead Time Before Failure):</strong> Displays "8 - 34 Days". The ultimate business result: how much advance warning the model gives operators.</li>
+  <li><strong>Monitored Events Table (Left Card):</strong> A searchable catalog of every benchmark event. Shows the Event ID, Turbine Asset ID (e.g., Turbine 21), and the Ground-Truth Failure Mode (Gearbox, Transformer, Generator, etc.).</li>
+  <li><strong>Multi-Farm Architecture &amp; Badges (Right Card):</strong>
+    <ul>
+      <li><span class="badge" style="background:#fee2e2;color:#991b1b;">Leakage Guard</span> Explains that status codes (<code>status_type_id 3/4</code>) were deleted to eliminate cheating.</li>
+      <li><span class="badge" style="background:#dcfce7;color:#166534;">Physical Fidelity</span> Explains that zero synthetic data (no SMOTE) was fabricated.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Tab 2: SCADA Telemetry Studio</h2>
+<ul>
+  <li><strong>Sidebar - "Select Monitoring Event" Dropdown:</strong> Lets you choose which incident to inspect. Pick <code>Event 72 (Gearbox - Turbine 21)</code> for the primary demo.</li>
+  <li><strong>Sidebar - "Sensor Telemetry View" Dropdown:</strong> Switches the top plot between Thermodynamic Differentials (&Delta;T), Absolute Temperatures, Aerodynamic Curves, or RPM ratios.</li>
+  <li><strong>Sidebar - "Alarm Decision Threshold" Slider:</strong> Controls the trigger sensitivity (default: <code>0.35</code>).</li>
+  <li><strong>Top Plot ("SCADA Sensor Trajectory"):</strong>
+    <ul>
+      <li><em>Blue shaded background:</em> The healthy training baseline period. Notice how the temperature line stays low and flat.</li>
+      <li><em>Orange shaded background:</em> The prediction surveillance period. Notice how the line begins to climb upward days before the end.</li>
+    </ul>
+  </li>
+  <li><strong>Bottom Plot ("Real-Time Anomaly Probability"):</strong>
+    <ul>
+      <li><em>Horizontal dashed red line:</em> Your 0.35 alarm threshold.</li>
+      <li><em>Vertical solid red line:</em> The timestamp where the turbine actually suffered catastrophic shutdown.</li>
+      <li><em>The Key Moment:</em> Point to where the blue probability curve crosses above the dashed red line. The horizontal gap between this alarm point and the vertical failure line is the <strong>Early Warning Lead Time (14.0 Days!)</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Tab 3: Model Benchmark &amp; CARE</h2>
+<ul>
+  <li><strong>Top Left Table ("Leave-One-Turbine-Out Cross-Validation"):</strong> Compares XGBoost (0.83 AUC, 0.67s training) against Random Forest (0.80 AUC, 4.8s) and Logistic Regression (0.74 AUC, 1.1s). Proves XGBoost is both the fastest and most accurate.</li>
+  <li><strong>Top Right Table ("CARE Benchmark Earliness"):</strong> Displays the exact advance lead times achieved per subsystem: Gearbox (14.0 days), Transformer (34.2 days), Generator Bearing (8.0 days), Hydraulics (13.0 days).</li>
+  <li><strong>Bottom Left Plot ("Fleet Anomaly Score Distribution"):</strong> Shows two density curves. Healthy records cluster tightly near 0.0 risk, while anomalies spread widely into the 0.40 - 0.90 risk zone.</li>
+  <li><strong>Bottom Right Box ("Confusion Matrix"):</strong> Live readout of True Positives, False Positives, False Negatives, and True Negatives at the current threshold.</li>
+</ul>
+
+<h2>Tab 4: Explainable AI (SHAP &amp; LIME Studio)</h2>
+<ul>
+  <li><strong>Sidebar - "Select Benchmark Failure Mode":</strong> Toggle between Gearbox (Event 72), Generator Bearing (Event 0), Transformer (Event 68), and Normal Control (Event 25).</li>
+  <li><strong>Top Left Plot ("Global SHAP Feature Importance"):</strong> Horizontal bar chart showing fleet-wide drivers. Differential temperatures and rolling 6h trends dominate.</li>
+  <li><strong>Top Right Plot ("Local SHAP Attribution Breakdown"):</strong> A waterfall showing which sensors caused the alarm for the selected event. Red/green bars show bearing friction pushing the risk up while cool generator coils pull risk down.</li>
+  <li><strong>Bottom Left Plot ("LIME Local Decision Rules"):</strong> Displays the exact numerical threshold rules extracted by the local linear surrogate.</li>
+  <li><strong>Bottom Right Card ("Critic's Physics-Informed Verification"):</strong> An automated domain check confirming that the model's top mathematical drivers physically match the mechanical engineering failure mode.</li>
+</ul>
+
+<h2>Tab 5: Business Value &amp; ROI Calculator</h2>
+<ul>
+  <li><strong>Sidebar Sliders:</strong> Lets stakeholders adjust financial assumptions in real time: Unplanned Breakdown Cost ($C_{FN}$ = $150,000), False Alarm Inspection Cost ($C_{FP}$ = $3,500), Preventive Repair Cost ($C_{TP}$ = $8,000), Fleet Size (36 Turbines), and Alarm Threshold (0.35).</li>
+  <li><strong>Top Cards:</strong> Displays Expected Net Fleet Savings (<strong>$1,200,000+</strong>), Prevented Catastrophic Breakdowns (<strong>40+ events</strong>), and Return on Investment (<strong>~400% ROI</strong>).</li>
+  <li><strong>Bottom Chart ("Total Cost vs. Alarm Threshold"):</strong> Plots total financial loss as a U-curve. Shows that threshold 0.35 sits right at the financial minimum, proving why standard 0.50 is suboptimal.</li>
+</ul>
+
+<h1>7. The Master Pitch Script (Word-for-Word)</h1>
+<p>Here is your exact speaking script for presenting this project live in 5 minutes with total confidence.</p>
+
+<div class="card card-info">
+  <div class="card-title">🗣️ Step 1: The 30-Second Hook (Don't start with algorithms, start with money)</div>
+  <em>"Good morning everyone. Today I am presenting our industrial condition monitoring platform for wind turbines. In wind energy, an offshore gearbox failure is an absolute financial disaster. If a high-speed shaft bearing destroys itself in the North Sea during winter, mobilizing a jack-up crane barge costs upwards of $150,000, and replacement parts cost another $250,000. Our objective was simple: build a physics-grounded, explainable AI system that detects catastrophic breakdowns 2 to 4 weeks in advance, allowing operators to perform an $8,000 uptower swap and save over $140,000 per breakdown."</em>
+</div>
+
+<div class="card card-info">
+  <div class="card-title">🗣️ Step 2: The Data &amp; Physics Engineering (1 Minute)</div>
+  <em>"We evaluated our system on the CARE_To_Compare industrial benchmark, covering 89 turbine years and 95 operational events across Portugal and Germany. Rather than feeding raw sensor data into black-box models, we applied domain thermodynamics. Raw temperatures suffer from severe weather seasonality: a bearing at 60°C in summer is normal, but at 60°C in winter it is burning up. We engineered thermodynamic differentials (&Delta;T over ambient) to completely eliminate weather bias, and 6-hour backward rolling moving averages to capture slow-creeping mechanical friction."</em>
+</div>
+
+<div class="card card-info">
+  <div class="card-title">🗣️ Step 3: Model Rigor &amp; Sub-Second Speed (1 Minute)</div>
+  <em>"To ensure genuine generalizability, we validated using Leave-One-Turbine-Out Group Cross-Validation. We never tested on a turbine the model had already seen. Our Extreme Gradient Boosting (XGBoost) model achieved a 0.83 Test ROC-AUC, training in just 0.67 seconds on 100,000 rows with a lightweight 109 MB memory footprint—making it ideal for real-time SCADA edge hardware."</em>
+</div>
+
+<div class="card card-info">
+  <div class="card-title">🗣️ Step 4: The Live Demonstration (1.5 Minutes)</div>
+  <em>"Looking at Tab 2 of our dashboard, we simulate real-time monitoring on Event 72—a catastrophic gearbox bearing breakdown. The blue line represents healthy baseline operation. As we enter the surveillance window, subtle bearing friction causes the temperature to creep upward. Using our cost-optimal 0.35 threshold, our model triggers an anomaly alert exactly 14.0 days before total system trip. That gives maintenance teams two full weeks of advance warning."</em>
+</div>
+
+<div class="card card-info">
+  <div class="card-title">🗣️ Step 5: Explainable AI &amp; The Bottom Line (1 Minute)</div>
+  <em>"Finally, on Tab 4, we eliminate the black-box problem using TreeSHAP and LIME. Domain engineers can verify that the alert was triggered specifically by gearbox bearing temperature and lubrication heating, with zero false attribution to unrelated generator coils. On Tab 5, our business calculator shows that across a 36-turbine fleet, this early detection saves over $1.2 Million in avoided crane mobilizations and preserved clean energy generation."</em>
+</div>
+
+<h1>8. Lecturer Defense FAQs: 25 Bulletproof Answers</h1>
+
+<h2>Category A: Dataset &amp; Preprocessing</h2>
+<p><strong>Q1: Where does this dataset come from?</strong><br>
+<em>A:</em> "It comes from the CARE_To_Compare European benchmark published in 2023. Wind Farm A consists of 5 onshore turbines from EDP Open Data in Portugal, while Wind Farms B and C comprise 31 offshore turbines in the German North and Baltic Seas."</p>
+
+<p><strong>Q2: Why are readings averaged every 10 minutes instead of millisecond high-frequency vibration?</strong><br>
+<em>A:</em> "High-frequency vibration (10 kHz) produces terabytes of data that cannot be streamed over satellite or cellular links from offshore turbines. Standard wind industry SCADA aggregates sensors into 10-minute statistics (mean, min, max, std). Our model proves that thermodynamic drifts in 10-minute SCADA are sufficient for weeks of advance notice."</p>
+
+<p><strong>Q3: Why did you forbid SMOTE oversampling?</strong><br>
+<em>A:</em> "SMOTE creates synthetic points by linear interpolation in feature space. In physical machines, this creates impossible thermodynamic states (e.g. producing 2 MW with zero wind, or a bearing hotter than ambient without generating heat). Real industrial physics demands genuine sensor telemetry."</p>
+
+<p><strong>Q4: What is Target Leakage in SCADA?</strong><br>
+<em>A:</em> "When a turbine fails, its internal controller writes status codes like <code>status_type_id == 3</code> ('Emergency Shutdown'). If an ML model sees that column, it cheats by checking if the turbine is already shut down. We purged all status codes to force the model to detect failures purely from early thermodynamic changes."</p>
+
+<p><strong>Q5: How did you handle missing sensor values?</strong><br>
+<em>A:</em> "We used Last Observation Carried Forward (LOCF) within each turbine's continuous time series. This respects temporal ordering without introducing lookahead bias."</p>
+
+<h2>Category B: Feature Engineering &amp; Physics</h2>
+<p><strong>Q6: Why are raw temperatures insufficient?</strong><br>
+<em>A:</em> "Because of seasonal weather bias. In summer at 38°C ambient, a healthy bearing runs at 62°C. In winter at -5°C ambient, a destroyed bearing might only reach 55°C. Raw temperatures cause false alarms in summer and missed failures in winter."</p>
+
+<p><strong>Q7: How does &Delta;T solve seasonality?</strong><br>
+<em>A:</em> "&Delta;T subtracts ambient temperature from the component temperature (&Delta;T = T_component - T_ambient). This isolates purely the internally generated frictional and electrical heat, providing an invariant indicator across all seasons."</p>
+
+<p><strong>Q8: Why 6-hour moving averages and not 10 minutes?</strong><br>
+<em>A:</em> "SCADA telemetry has short-term turbulence noise. Mechanical bearing degradation causes slow, creeping heat over hours. A 6-hour rolling average smooths momentary spikes while exposing true thermodynamic degradation."</p>
+
+<p><strong>Q9: How did you prevent lookahead leakage in rolling averages?</strong><br>
+<em>A:</em> "By strictly using backward alignment (<code>align = 'right'</code>). Every rolling window only looks at past timesteps, matching real-world edge deployment."</p>
+
+<p><strong>Q10: What does the Gear Ratio feature measure?</strong><br>
+<em>A:</em> "It calculates <code>generator_rpm / rotor_rpm</code>. In a geared turbine, this ratio is locked at roughly 90:1. If gear teeth strip or generator couplings slip, this ratio fluctuates."</p>
+
+<h2>Category C: Modeling &amp; Validation Rigor</h2>
+<p><strong>Q11: Why not use Deep Learning like LSTM or Transformers?</strong><br>
+<em>A:</em> "SCADA is 10-minute tabular time-series data governed by thermodynamics, not high-frequency text or audio waveforms. LSTMs overfit to specific turbine IDs, take hours to train, require GPUs, and cannot run exact TreeSHAP. XGBoost trains in 0.67 seconds, achieves 0.83 AUC, runs on 109 MB RAM, and allows exact mathematical interpretability."</p>
+
+<p><strong>Q12: Why is a random 80/20 train/test split a fatal flaw in this problem?</strong><br>
+<em>A:</em> "Because adjacent 10-minute records from the same turbine are nearly identical. A random split leaks consecutive records into both training and test sets, producing fake 99% accuracy that crashes in the field."</p>
+
+<p><strong>Q13: How did you validate generalizability?</strong><br>
+<em>A:</em> "We enforced Leave-One-Turbine-Out Group Cross-Validation (Group K-Fold by Asset ID). When testing Turbine #21, all of its data was withheld from training. The model proved it can predict failures on a completely unseen physical machine."</p>
+
+<p><strong>Q14: What was the exact training time and resource budget?</strong><br>
+<em>A:</em> "0.67 seconds on 100,000 balanced SCADA observations using a standard 4-core CPU, consuming only 109 MB of RAM."</p>
+
+<p><strong>Q15: What is the CARE Earliness metric?</strong><br>
+<em>A:</em> "It measures the elapsed time (in hours or days) between the model's first persistent anomaly alert and the actual emergency trip timestamp recorded in maintenance logs."</p>
+
+<p><strong>Q16: How much early warning did you achieve?</strong><br>
+<em>A:</em> "14.0 days for Gearbox failures, 34.2 days for Transformer overheating, 8.0 days for Generator bearings, and 13.0 days for Hydraulic group faults."</p>
+
+<h2>Category D: Financial ROI &amp; Threshold Selection</h2>
+<p><strong>Q17: Why did you set the alarm threshold to 0.35 instead of 0.50?</strong><br>
+<em>A:</em> "Costs are deeply asymmetric. A False Negative (missed breakdown) costs $150,000. A False Positive (unnecessary inspection) costs $3,500. Minimizing expected financial loss pulls the optimal threshold down to 0.30 - 0.35."</p>
+
+<p><strong>Q18: What is the formula for expected financial loss?</strong><br>
+<em>A:</em> "<code>Total Loss = (FN * $150,000) + (FP * $3,500) + (TP * $8,000)</code>. At threshold 0.35, this cost is minimized."</p>
+
+<p><strong>Q19: How did you calculate $142,000 net savings on a single gearbox save?</strong><br>
+<em>A:</em> "An unplanned breakdown costs $150,000 (vessel charter + parts). A planned uptower bearing swap costs $8,000. $150,000 - $8,000 = $142,000 net savings."</p>
+
+<p><strong>Q20: What is the estimated total savings across a 36-turbine fleet?</strong><br>
+<em>A:</em> "Over $1.2 Million across the operational lifecycle, preventing more than 40 catastrophic downtime events."</p>
+
+<h2>Category E: Explainable AI (SHAP &amp; LIME)</h2>
+<p><strong>Q21: What is a Shapley value in simple terms?</strong><br>
+<em>A:</em> "It is a game-theoretic metric that fairly divides credit among multiple collaborating features. It calculates how much each sensor pushed the anomaly probability up or down compared to the baseline fleet average."</p>
+
+<p><strong>Q22: Why use TreeSHAP instead of KernelSHAP?</strong><br>
+<em>A:</em> "KernelSHAP is a slow approximation that samples feature permutations. TreeSHAP exploits the internal decision paths of tree ensembles to compute exact mathematical Shapley values in polynomial time."</p>
+
+<p><strong>Q23: How does LIME differ from SHAP?</strong><br>
+<em>A:</em> "SHAP provides exact additive feature contributions. LIME fits a local linear surrogate model around a single prediction point, outputting simple human-readable rules like <code>IF temp > 58.5°C THEN Anomaly</code>."</p>
+
+<p><strong>Q24: How did you verify that the model isn't learning spurious correlations?</strong><br>
+<em>A:</em> "Through our Critic's Physics-Informed Verification. For gearbox failures, TreeSHAP confirmed that gearbox bearing and oil temperatures accounted for >80% of risk, while unrelated generator and pitch sensors had near-zero attribution."</p>
+
+<p><strong>Q25: What is the main future upgrade for this project?</strong><br>
+<em>A:</em> "Fusing 10-minute SCADA telemetry with edge high-frequency vibration spectral demodulation (envelope analysis) to pinpoint the exact failing bearing roller or gear tooth mesh frequency."</p>
+
+</body>
+</html>

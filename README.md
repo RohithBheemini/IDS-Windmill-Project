@@ -31,19 +31,28 @@ An end-to-end industrial data science project for predictive condition monitorin
 
 ## 🚀 Quick Start
 
-### 1. Launch the Interactive Shiny Application
-From R or terminal:
-```bash
-Rscript run_app.R
-```
-Or inside an interactive R console:
-```r
-shiny::runApp("shiny_app")
-```
-The dashboard opens at `http://127.0.0.1:3838`.
+### Run the Master Script (`main.R`)
+The entire project is controlled by a single master script, `main.R`.
 
-### 2. View the Humanized Case-Study Report
-Open [`wind_turbine_ids_report.html`](wind_turbine_ids_report.html) in any web browser to explore the full case study with interactive charts and tables.
+```bash
+# 1. Run live condition monitoring demo and launch the Shiny dashboard
+Rscript main.R
+
+# 2. Directly launch the interactive Shiny web dashboard (http://127.0.0.1:3838)
+Rscript main.R --app
+
+# 3. Run the standalone condition monitoring and XAI demo in terminal
+Rscript main.R --demo
+
+# 4. Optional: Retrain models or re-run the full data cleaning pipeline
+Rscript main.R --train
+Rscript main.R --clean
+Rscript main.R --pipeline
+```
+
+### View the Humanized Case-Study Report & Presentation
+* Open [`wind_turbine_ids_report.html`](wind_turbine_ids_report.html) in any browser for the complete interactive case study.
+* Open [`presentation_wind_turbine_ids.pptx`](presentation_wind_turbine_ids.pptx) for the executive presentation slides (with speaker notes in [`presentation_slides.md`](presentation_slides.md)).
 
 ---
 
@@ -51,34 +60,28 @@ Open [`wind_turbine_ids_report.html`](wind_turbine_ids_report.html) in any web b
 
 ```
 IDS-Windmill-Project/
-├── dataset_complete_details.md     # Exhaustive microscopic reference manual (for zero-knowledge readers)
-├── wind_turbine_ids_report.Rmd      # Humanized case-study report source
-├── wind_turbine_ids_report.html     # Compiled interactive HTML case study
-├── run_app.R                        # One-click launcher script for Shiny dashboard
+├── main.R                          # Master project script (Pipeline, Demo, & Shiny Launcher)
 ├── shiny_app/
 │   └── app.R                       # Complete Shiny dashboard application (bslib Darkly theme)
+├── dataset_complete_details.md     # Exhaustive microscopic reference manual (for zero-knowledge readers)
+├── presentation_wind_turbine_ids.pptx # Executive 10-slide minimalist presentation
+├── presentation_slides.md          # Speaker notes and slide script
+├── wind_turbine_ids_report.Rmd     # Humanized case-study report source
+├── wind_turbine_ids_report.html    # Compiled interactive HTML case study
 ├── data_clean/
 │   ├── clean_telemetry.rds         # Cleaned, physically verified SCADA telemetry
 │   ├── clean_events.rds            # Pre-event feature summaries across monitored events
-│   ├── clean_events.csv            # Clean event catalog in CSV format
-│   ├── events_farm_b.rds           # Metadata for Wind Farm B (Offshore Germany)
-│   └── events_farm_c.rds           # Metadata for Wind Farm C (Offshore Germany)
+│   └── clean_events.csv            # Clean event catalog in CSV format
 ├── models/
 │   ├── xgb_model.rds               # Production Extreme Gradient Boosting model
 │   ├── rf_model.rds                # Production Random Forest (ranger) model
 │   ├── glm_model.rds               # Production Logistic Regression (GLM) baseline
 │   ├── benchmark_results.rds       # Cross-validation performance metrics
-│   ├── bench_training_times.rds    # Empirical timing and data budget benchmark results
 │   ├── care_earliness.rds          # Lead time (hours/days) before shutdown per event
 │   ├── xai_global_shap.rds         # Global fleet-wide SHAP feature rankings
 │   ├── xai_local_shap.rds          # Local SHAP attributions by failure mode
 │   └── xai_lime_results.rds        # Local LIME surrogate rulebook and weights
-├── scripts/
-│   ├── 01_clean_and_engineer.R     # End-to-end data cleaning and physics feature pipeline
-│   ├── 02_model_building.R         # Leave-One-Turbine-Out CV and CARE benchmark script
-│   ├── 03_explainability_xai.R     # Exact TreeSHAP and LIME pipeline
-│   └── benchmark_models_timing.R   # Model timing and computational budget verification
-└── .gitignore                       # Excludes raw multi-gigabyte archives (CARE_To_Compare)
+└── .gitignore                      # Excludes raw multi-gigabyte archives (CARE_To_Compare)
 ```
 
 ---
