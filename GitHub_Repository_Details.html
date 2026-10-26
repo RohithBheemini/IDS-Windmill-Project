@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Repository Details</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm 12mm;
+    }
+    
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 11.5px;
+      line-height: 1.4;
+      color: #0f172a;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+    }
+
+    /* HEADER */
+    .header {
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .title-area h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 2px 0;
+      letter-spacing: -0.4px;
+    }
+
+    .title-area p {
+      font-size: 11.5px;
+      color: #64748b;
+      margin: 0;
+    }
+
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: #f1f5f9;
+      color: #334155;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* SECTIONS */
+    .section-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-left: 3px solid #0284c7;
+      padding-left: 6px;
+      margin: 9px 0 5px 0;
+    }
+
+    /* REPO LINK CARD */
+    .repo-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+    }
+
+    .repo-link-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border: 1px solid #94a3b8;
+      border-radius: 4px;
+      padding: 6px 10px;
+      margin-top: 4px;
+    }
+
+    .repo-url {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0284c7;
+      text-decoration: none;
+    }
+
+    .repo-url:hover {
+      text-decoration: underline;
+    }
+
+    .repo-btn {
+      background: #0f172a;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 10.5px;
+    }
+
+    .meta-label {
+      color: #64748b;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 9px;
+      display: block;
+    }
+
+    .meta-val {
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    /* CODE BOXES */
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 10px;
+      line-height: 1.4;
+      margin: 4px 0 7px 0;
+      white-space: pre;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 10px;
+    }
+
+    p code, td code {
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 1px 4px;
+      border-radius: 3px;
+      border: 1px solid #e2e8f0;
+      font-weight: 600;
+    }
+
+    /* TABLES */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 4px 0 7px 0;
+      font-size: 10px;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 6px;
+      text-align: left;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 9.5px;
+      letter-spacing: 0.3px;
+    }
+
+    td {
+      background: #ffffff;
+    }
+
+    /* 2 COLUMNS LAYOUT */
+    .columns-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid #cbd5e1;
+      padding-top: 5px;
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="title-area">
+      <h1>GitHub Repository Details</h1>
+      <p>Technical Documentation &bull; Local System Setup &bull; Execution Reference</p>
+    </div>
+    <div class="badge">Official Documentation</div>
+  </div>
+
+  <!-- 1. REPOSITORY OVERVIEW -->
+  <div class="section-title">1. Repository Specification &amp; Hyperlink</div>
+  <div class="repo-card">
+    <div style="font-size: 10px; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 2px;">
+      Direct Remote Repository URL (Click to Open)
+    </div>
+    <div class="repo-link-row">
+      <a class="repo-url" href="https://github.com/RohithBheemini/IDS-Windmill-Project" target="_blank">
+        https://github.com/RohithBheemini/IDS-Windmill-Project
+      </a>
+      <a class="repo-btn" href="https://github.com/RohithBheemini/IDS-Windmill-Project" target="_blank">
+        Open Repository &rarr;
+      </a>
+    </div>
+
+    <div class="meta-grid">
+      <div>
+        <span class="meta-label">Project</span>
+        <span class="meta-val">IDS-Windmill-Project</span>
+      </div>
+      <div>
+        <span class="meta-label">Owner</span>
+        <span class="meta-val">RohithBheemini</span>
+      </div>
+      <div>
+        <span class="meta-label">Default Branch</span>
+        <span class="meta-val">main</span>
+      </div>
+      <div>
+        <span class="meta-label">Primary Stack</span>
+        <span class="meta-val">R (v4.0.0+) / Shiny</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SETUP & INSTALLATION -->
+  <div class="section-title">2. Taking the Project Into Your Own System (Setup Guide)</div>
+  <div class="columns-2">
+    <div>
+      <div style="font-size: 10px; font-weight: 700; color: #334155; margin-bottom: 2px;">
+        Step 1: Clone Repository
+      </div>
+      <pre><code># Clone repository via Git
+git clone https://github.com/RohithBheemini/IDS-Windmill-Project.git
+
+# Move into root directory
+cd IDS-Windmill-Project</code></pre>
+    </div>
+    <div>
+      <div style="font-size: 10px; font-weight: 700; color: #334155; margin-bottom: 2px;">
+        Step 2: Install R Package Dependencies
+      </div>
+      <pre><code># Run in terminal / PowerShell once:
+Rscript -e "install.packages(c('data.table',
+'zoo','ranger','xgboost','pROC','lime',
+'shiny','bslib','bsicons','DT','ggplot2',
+'scales','rmarkdown','knitr'),
+repos='https://cloud.r-project.org')"</code></pre>
+    </div>
+  </div>
+
+  <!-- 3. RUNNING COMMANDS -->
+  <div class="section-title">3. Running the Application &amp; Workflows (main.R)</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 32%;">Target Action</th>
+        <th style="width: 35%;">CLI Command</th>
+        <th style="width: 33%;">Description / Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Launch Dashboard</strong></td>
+        <td><code>Rscript main.R --app</code></td>
+        <td>Opens interactive Shiny UI at <code>http://127.0.0.1:3838</code></td>
+      </tr>
+      <tr>
+        <td><strong>Run Terminal Demo</strong></td>
+        <td><code>Rscript main.R --demo</code></td>
+        <td>Simulates Event 72 breakdown, 14-day lead time &amp; XAI output</td>
+      </tr>
+      <tr>
+        <td><strong>Full Demo + App</strong></td>
+        <td><code>Rscript main.R</code></td>
+        <td>Executes live CLI demo and automatically launches browser app</td>
+      </tr>
+      <tr>
+        <td><strong>Retrain Models</strong></td>
+        <td><code>Rscript main.R --train</code></td>
+        <td>Re-fits GLM, Random Forest, and XGBoost models (0.67s training)</td>
+      </tr>
+      <tr>
+        <td><strong>Re-clean Telemetry</strong></td>
+        <td><code>Rscript main.R --clean</code></td>
+        <td>Re-engineers physics features (&Delta;T, 6h rolling, gear slip)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 4. REPOSITORY STRUCTURE & DELIVERABLES -->
+  <div class="section-title">4. Core Deliverables &amp; File Hierarchy</div>
+  <div class="columns-2">
+    <div>
+      <pre style="margin: 0; font-size: 9px; line-height: 1.35;"><code>IDS-Windmill-Project/
+├── main.R               # Unified controller script
+├── shiny_app/
+│   └── app.R            # 5-tab Shiny web dashboard
+├── data_clean/
+│   ├── clean_telemetry.rds # Cleaned SCADA dataset (109 MB)
+│   └── clean_events.csv    # 44 anomaly & 51 normal events
+├── models/
+│   ├── xgb_model.rds    # XGBoost classifier (0.83 AUC)
+│   ├── rf_model.rds     # Random Forest benchmark
+│   ├── glm_model.rds    # Logistic Regression baseline
+│   ├── care_earliness.rds # 8-34 days lead-time metrics
+│   └── xai_global_shap.rds# TreeSHAP feature attributions
+├── wind_turbine_ids_report.html # Full technical report
+├── presentation_wind_turbine_ids.pptx # 12-slide deck
+└── README.md            # Project documentation</code></pre>
+    </div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 38%;">Component</th>
+            <th style="width: 62%;">Role in Project</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>main.R</code></td>
+            <td>Single entry point for demo, dashboard, training, and pipeline.</td>
+          </tr>
+          <tr>
+            <td><code>shiny_app/app.R</code></td>
+            <td>Decision support app: telemetry studio, benchmarks, XAI, ROI.</td>
+          </tr>
+          <tr>
+            <td><code>report.html</code></td>
+            <td>Comprehensive technical documentation with lecturer Q&amp;A.</td>
+          </tr>
+          <tr>
+            <td><code>presentation.pptx</code></td>
+            <td>16:9 widescreen presentation deck (titles 32–46pt, bright white).</td>
+          </tr>
+          <tr>
+            <td><code>dataset_details.md</code></td>
+            <td>Microscopic channel catalog and physical sensor dictionary.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 4px; padding: 5px 8px; font-size: 9.5px; color: #334155; margin-top: 4px;">
+        <strong>Zero Cloud Dependencies:</strong> All telemetry and models are local <code>.rds</code> files. The application runs 100% offline without external services or credentials.
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Repository: <a href="https://github.com/RohithBheemini/IDS-Windmill-Project" style="color: #0284c7; text-decoration: none;">github.com/RohithBheemini/IDS-Windmill-Project</a></span>
+    <span>Host: Localhost:3838 &bull; Engine: R 4.6.1</span>
+    <span>Page 1 of 1</span>
+  </div>
+
+</body>
+</html>
