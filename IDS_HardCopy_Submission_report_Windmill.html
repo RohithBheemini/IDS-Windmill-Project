@@ -6,7 +6,7 @@
   <style>
     @page {
       size: A4 portrait;
-      margin: 16mm 22mm 14mm 22mm;
+      margin: 18mm 25.4mm 16mm 25.4mm;
     }
 
     * {
@@ -43,7 +43,7 @@
 
     .page-footer {
       text-align: center;
-      font-size: 10pt;
+      font-size: 12px;
       color: #000000;
       padding-top: 4mm;
       margin-top: auto;
@@ -191,65 +191,226 @@
     }
 
     /* Cover Page specific */
-    .cover-wrapper {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 255mm;
-    }
-
     .cover-title {
-      font-size: 14.5pt;
+      font-size: 16px;
       font-weight: bold;
-      line-height: 1.35;
-      margin-bottom: 10pt;
+      line-height: 1.3;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-top: 10pt;
+      margin-bottom: 26pt;
+      color: #000000;
     }
 
     .cover-sub {
-      font-size: 10.5pt;
-      line-height: 1.45;
-      margin-bottom: 4pt;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.4;
+      margin-bottom: 22pt;
+      color: #000000;
+    }
+
+    .cover-degree-block {
+      margin-bottom: 22pt;
     }
 
     .cover-degree {
-      font-size: 12.5pt;
-      font-weight: bold;
-      margin: 2pt 0;
-    }
-
-    .cover-dept {
-      font-size: 12pt;
+      font-size: 14px;
       font-weight: bold;
       line-height: 1.3;
+      text-transform: uppercase;
+      color: #000000;
     }
 
-    .cover-college {
-      font-size: 12pt;
+    .cover-in {
+      font-size: 12px;
+      font-weight: bold;
+      margin: 3pt 0;
+      color: #000000;
+    }
+
+    .cover-branch {
+      font-size: 14px;
       font-weight: bold;
       line-height: 1.3;
-      margin-top: 2pt;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    .cover-by-block {
+      margin-bottom: 22pt;
+    }
+
+    .cover-by {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 3pt;
+      color: #000000;
+    }
+
+    .cover-student {
+      font-size: 14px;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .cover-mentor-block {
+      margin-bottom: 18pt;
+    }
+
+    .cover-mentor-lbl {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 3pt;
+      color: #000000;
+    }
+
+    .cover-mentor-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .cover-logo-block {
+      margin: 14pt 0 18pt 0;
+    }
+
+    .cover-logo-img {
+      width: 105px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .cover-inst-block {
+      margin-top: 4pt;
+    }
+
+    .cover-dept-name {
+      font-size: 13px;
+      font-weight: bold;
+      line-height: 1.3;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    .cover-college-name {
+      font-size: 13px;
+      font-weight: bold;
+      line-height: 1.3;
+      margin-top: 3pt;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    .cover-location {
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.3;
+      margin-top: 3pt;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    .cover-date {
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.3;
+      margin-top: 3pt;
+      color: #000000;
     }
 
     /* Certificate specific */
-    .cert-wrapper {
+    .cert-header {
       text-align: center;
-      margin-bottom: 10pt;
+      margin-top: 10pt;
     }
 
-    .cert-text {
-      font-size: 11pt;
-      line-height: 1.6;
+    .cert-college {
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 1.25;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    .cert-autonomous {
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.3;
+      margin-top: 3pt;
+      color: #000000;
+    }
+
+    .cert-dept {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1.3;
+      margin-top: 4pt;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    .cert-seal-block {
+      text-align: center;
+      margin-top: 14pt;
+      margin-bottom: 16pt;
+    }
+
+    .cert-seal-img {
+      width: 95px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .cert-heading {
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: underline;
+      letter-spacing: 1.5px;
+      margin-bottom: 24pt;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    .cert-body {
+      font-size: 12px;
+      line-height: 1.45;
       text-align: justify;
       text-justify: inter-word;
-      margin: 16pt 0 20pt 0;
+      color: #000000;
+      margin-bottom: 0;
     }
 
-    .cert-sig-block {
-      margin-top: 35pt;
-      text-align: left;
+    .cert-student-line {
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+      margin: 18pt 0;
+      color: #000000;
+    }
+
+    .cert-signature-container {
+      margin-top: 55pt;
+      text-align: right;
+      padding-right: 25pt;
+    }
+
+    .cert-sig-box {
+      display: inline-block;
+      text-align: center;
+    }
+
+    .cert-sig-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .cert-sig-title {
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 4pt;
+      color: #000000;
     }
 
     .ref-item {
@@ -268,56 +429,44 @@
   <!-- ===================================================================== -->
   <!-- PAGE 1: COVER PAGE (footer: i)                                        -->
   <!-- ===================================================================== -->
-  <div class="page">
-    <div class="cover-wrapper">
-      <div>
-        <div class="cover-title">
-          PREDICTIVE CONDITION MONITORING AND ANOMALY DETECTION FOR WIND TURBINES USING SCADA TELEMETRY AND EXPLAINABLE AI
-        </div>
-        <div class="cover-sub">
-          Case Study report submitted in partial fulfillment of the Requirements<br>
-          for the Award of the Degree of
-        </div>
-        <div class="cover-degree">
-          BACHELOR OF ENGINEERING
-        </div>
-        <div style="font-size: 10.5pt; font-weight: bold; margin: 2pt 0;">in</div>
-        <div class="cover-dept">
-          ARTIFICIAL INTELLIGENCE AND DATA SCIENCE
-        </div>
+  <div class="page cover-page">
+    <div class="page-content" style="text-align: center;">
+      <div class="cover-title">
+        PREDICTIVE CONDITION MONITORING AND<br>
+        ANOMALY DETECTION FOR WIND TURBINES USING<br>
+        SCADA TELEMETRY AND EXPLAINABLE AI
       </div>
 
-      <div style="margin: 6pt 0;">
-        <div style="font-size: 10.5pt; font-weight: bold; margin-bottom: 2pt;">By</div>
-        <div style="font-size: 12.5pt; font-weight: bold; color: #111827;">
-          Bheemini Venkat Rohith &nbsp;&nbsp;&nbsp;&nbsp; (160124771029)
-        </div>
-        <div style="font-size: 10.5pt; font-weight: bold; margin-top: 12pt; margin-bottom: 2pt;">
-          Under the Mentorship of
-        </div>
-        <div style="font-size: 12.5pt; font-weight: bold; color: #111827;">
-          Ms. Puchalapalli Greeshma
-        </div>
-        <div style="font-size: 10pt; color: #374151;">Assistant Professor</div>
+      <div class="cover-sub">
+        Case Study report submitted in partial fulfillment of the Requirements<br>
+        for the Award of the Degree of
       </div>
 
-      <div style="margin: 6pt 0;">
-        <img src="Im20.png" alt="CBIT Logo" style="width: 100px; height: auto;">
+      <div class="cover-degree-block">
+        <div class="cover-degree">BACHELOR OF ENGINEERING</div>
+        <div class="cover-in">in</div>
+        <div class="cover-branch">ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</div>
       </div>
 
-      <div>
-        <div class="cover-dept">
-          DEPARTMENT OF ARTIFICIAL INTELLIGENCE AND DATA SCIENCE
-        </div>
-        <div class="cover-college">
-          CHAITANYA BHARATHI INSTITUTE OF TECHNOLOGY (AUTONOMOUS)
-        </div>
-        <div style="font-size: 10.5pt; font-weight: bold; margin-top: 2pt;">
-          HYDERABAD - 500075
-        </div>
-        <div style="font-size: 11pt; font-weight: bold; margin-top: 6pt; color: #1f2937;">
-          October 31, 2026
-        </div>
+      <div class="cover-by-block">
+        <div class="cover-by">By</div>
+        <div class="cover-student">Bheemini Venkat Rohith &nbsp;&nbsp;&nbsp;&nbsp; (160124771029)</div>
+      </div>
+
+      <div class="cover-mentor-block">
+        <div class="cover-mentor-lbl">Under the Mentorship of</div>
+        <div class="cover-mentor-name">Ms. Puchalapalli Greeshma</div>
+      </div>
+
+      <div class="cover-logo-block">
+        <img src="Im20.png" alt="CBIT Logo" class="cover-logo-img">
+      </div>
+
+      <div class="cover-inst-block">
+        <div class="cover-dept-name">DEPARTMENT OF ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</div>
+        <div class="cover-college-name">CHAITANYA BHARATHI INSTITUTE OF TECHNOLOGY</div>
+        <div class="cover-location">HYDERABAD - 500075</div>
+        <div class="cover-date">October 31, 2026</div>
       </div>
     </div>
     <div class="page-footer">i</div>
@@ -326,42 +475,37 @@
   <!-- ===================================================================== -->
   <!-- PAGE 2: CERTIFICATE (footer: ii)                                      -->
   <!-- ===================================================================== -->
-  <div class="page">
+  <div class="page cert-page">
     <div class="page-content">
-      <div class="cert-wrapper">
-        <div style="font-size: 12.5pt; font-weight: bold; line-height: 1.3;">
-          CHAITANYA BHARATHI INSTITUTE OF TECHNOLOGY
-        </div>
-        <div style="font-size: 11pt; font-weight: bold; color: #374151;">
-          (AUTONOMOUS)
-        </div>
-        <div style="font-size: 11.5pt; font-weight: bold; margin-top: 2pt;">
-          DEPARTMENT OF ARTIFICIAL INTELLIGENCE AND DATA SCIENCE
-        </div>
-        <div style="margin-top: 8pt;">
-          <img src="Im36.png" alt="CBIT Seal" style="width: 85px; height: auto;">
-        </div>
-        <div style="font-size: 12.5pt; font-weight: bold; text-decoration: underline; margin-top: 8pt; letter-spacing: 1px;">
-          CERTIFICATE
-        </div>
+      <div class="cert-header">
+        <div class="cert-college">CHAITANYA BHARATHI INSTITUTE OF TECHNOLOGY</div>
+        <div class="cert-autonomous">(AUTONOMOUS)</div>
+        <div class="cert-dept">DEPARTMENT OF ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</div>
       </div>
 
-      <div class="cert-text">
+      <div class="cert-seal-block">
+        <img src="Im36.png" alt="CBIT Seal" class="cert-seal-img">
+      </div>
+
+      <div class="cert-heading">CERTIFICATE</div>
+
+      <div class="cert-body">
         This is to certify that the course case study report entitled <strong>PREDICTIVE CONDITION MONITORING AND ANOMALY DETECTION FOR WIND TURBINES USING SCADA TELEMETRY AND EXPLAINABLE AI</strong> being submitted by
-        <br><br>
-        <div style="text-align: center; font-size: 11.5pt; font-weight: bold;">
-          Bheemini Venkat Rohith &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 160124771029
-        </div>
-        <br>
-        in partial fulfillment for the award of the Degree of Bachelor of Engineering in Artificial Intelligence and Data Science to the <strong>CHAITANYA BHARATHI INSTITUTE OF TECHNOLOGY, HYDERABAD</strong> carried out under my mentorship and supervision during the academic year 2026-27. The results presented in this case study report have not been submitted to any other university or Institute for the award of any degree.
       </div>
 
-      <div class="cert-sig-block">
-        <div style="font-size: 11.5pt; font-weight: bold;">Ms. Puchalapalli Greeshma</div>
-        <div style="font-size: 10pt; color: #374151;">Assistant Professor</div>
-        <div style="font-size: 10pt; color: #374151;">Department of Artificial Intelligence and Data Science</div>
-        <div style="font-size: 10pt; color: #374151;">Chaitanya Bharathi Institute of Technology (Autonomous)</div>
-        <div style="font-size: 10pt; color: #374151;">Hyderabad &ndash; 500075</div>
+      <div class="cert-student-line">
+        Bheemini Venkat Rohith &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 160124771029
+      </div>
+
+      <div class="cert-body">
+        in partial fulfillment for the award of the Degree of Bachelor of Engineering in Artificial Intelligence and Data Science to the <strong>CHAITANYA BHARATHI INSTITUTE OF TECHNOLOGY, HYDERABAD</strong> carried out under my mentorship and supervision during the year 2026-27. The results presented in this case study report have not been submitted to any other university or Institute for the award of any degree.
+      </div>
+
+      <div class="cert-signature-container">
+        <div class="cert-sig-box">
+          <div class="cert-sig-name">Ms. Puchalapalli Greeshma</div>
+          <div class="cert-sig-title">Assistant Professor</div>
+        </div>
       </div>
     </div>
     <div class="page-footer">ii</div>
@@ -372,7 +516,7 @@
   <!-- ===================================================================== -->
   <div class="page">
     <div class="page-content">
-      <div style="font-size: 12pt; font-weight: bold; text-align: center; margin-bottom: 10pt; text-transform: uppercase;">
+      <div style="font-size: 12px; font-weight: bold; text-align: center; margin-bottom: 10pt; text-transform: uppercase;">
         TABLE OF CONTENTS
       </div>
 
